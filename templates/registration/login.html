@@ -1,0 +1,25 @@
+{% extends 'blogs/base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="card w-75 mx-auto border-0 shadow-lg rounded-4 overflow-hidden">
+        <div class="card-header bg-primary text-white fw-semibold">
+            Login
+        </div>
+        <div class="card-body p-4 p-md-5">
+            <form method='post'>
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <div class="d-flex gap-2 mt-4">
+                    {% bootstrap_button button_type='submit' content='Login' %}
+                    {% bootstrap_button button_type='reset' content='Cancel' %}
+                </div>
+            </form>
+            <p class="mt-3">Don't have an account? <a href="{% url 'signup' %}">Sign up</a></p>
+        </div>
+    </div>
+</div>
+{% endblock content %}
